@@ -1,0 +1,22 @@
+[package]
+name = "take5-cli"
+version = "0.2.0"
+authors = [
+    "Nathan Lilienthal <nathan@nixpulvis.com>",
+    "Alex Jo <jo.al@husky.neu.edu>",
+]
+
+[features]
+default = ["ext"]
+ext = ["take5-ext"]
+
+[dependencies]
+docopt = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+
+[dependencies.take5]
+path = "../"
+
+[dependencies.take5-ext]
+path = "../take5-ext"
+optional = true
