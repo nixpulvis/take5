@@ -1,8 +1,8 @@
-use std::{fmt, ops};
-use std::slice::{Iter, IterMut};
-use itertools::Itertools;
 use card::Card;
+use itertools::Itertools;
 use stack::Stack;
+use std::slice::{Iter, IterMut};
+use std::{fmt, ops};
 
 /// A type representing all of the stacks in the board.
 ///
@@ -70,7 +70,7 @@ impl StackId {
 ///     println!("{}", stack.bulls());
 /// }
 /// ```
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Board([Stack; 4]);
 
 impl Board {
@@ -103,7 +103,12 @@ impl Board {
         }
         if larger_than.len() > 0 {
             larger_than.sort_by(|a, b| a.1.cmp(&b.1));
-            Some(larger_than.last().expect("larger_than must have an element.").0)
+            Some(
+                larger_than
+                    .last()
+                    .expect("larger_than must have an element.")
+                    .0,
+            )
         } else {
             None
         }
@@ -145,7 +150,12 @@ impl Board {
 
 impl Default for Board {
     fn default() -> Self {
-        Board([Stack::default(), Stack::default(), Stack::default(), Stack::default()])
+        Board([
+            Stack::default(),
+            Stack::default(),
+            Stack::default(),
+            Stack::default(),
+        ])
     }
 }
 

@@ -20,7 +20,7 @@ extern crate take5;
 // mod iter;
 // mod player_proxy;
 // mod starting_hand;
-// mod wrapper;
+mod wrapper;
 
 #[cfg(test)]
 mod tests {

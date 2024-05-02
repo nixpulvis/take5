@@ -1,5 +1,5 @@
-use std::fmt;
 use configuration::Configuration;
+use std::fmt;
 
 /// Playing cards for the game.
 ///
@@ -20,7 +20,7 @@ use configuration::Configuration;
 /// let deck = Card::deck(|_| 3);
 /// println!("{:?}", deck[10]);
 /// ```
-#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone, Serialize)]
+#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone, Serialize, Deserialize)]
 pub struct Card(u8, u8);
 
 impl Card {
@@ -48,17 +48,19 @@ impl Card {
     /// assert_eq!(deck[70].bull(), 3);
     /// ```
     pub fn deck<F>(f: F) -> Vec<Card>
-        where F: Fn(u8) -> u8
+    where
+        F: Fn(u8) -> u8,
     {
         (1..Configuration::deck_size() + 1)
             .map(|i| {
                 let bull = f(i);
-                if bull < Configuration::bull_range().0 ||
-                   bull > Configuration::bull_range().1 {
-                    panic!("Bull values must be in range [{}..{}] was {}.",
-                           Configuration::bull_range().0,
-                           Configuration::bull_range().1,
-                           bull);
+                if bull < Configuration::bull_range().0 || bull > Configuration::bull_range().1 {
+                    panic!(
+                        "Bull values must be in range [{}..{}] was {}.",
+                        Configuration::bull_range().0,
+                        Configuration::bull_range().1,
+                        bull
+                    );
                 }
                 Card(i, bull)
             })

@@ -1,5 +1,3 @@
-use serde::de::Error;
-use serde::{Deserialize, Deserializer};
 use take5;
 use wrapper::Stack;
 
@@ -19,30 +17,10 @@ impl Board {
     }
 }
 
-// impl<'de> Deserialize<'de> for Board {
-//     fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-//     where
-//         D: Deserializer<'de>,
-//     {
-//         let mut stacks = try!(deserializer.visit_seq(VecVisitor::new()));
-//         if stacks.len() != 4 {
-//             return Err(Error::length_mismatch(stacks.len()));
-//         }
-//         let stacks_array = [
-//             stacks.remove(0),
-//             stacks.remove(0),
-//             stacks.remove(0),
-//             stacks.remove(0),
-//         ];
-//         Ok(Board::new(stacks_array))
-//     }
-// }
-
 #[cfg(test)]
 mod tests {
     use super::*;
     use serde_json as json;
-    use take5;
     use wrapper::{Card, Stack};
 
     fn board() -> Board {

@@ -7,7 +7,7 @@ use std::{fmt, ops};
 /// Don't think of this as a general purpose computer science stack, it's
 /// a more specific construct. This stack can only have 5 cards in it,
 /// and often gives up all 5 cards and replaces them with a new empty stack.
-#[derive(Debug, Default, Clone, Serialize)]
+#[derive(Debug, Default, Clone, Serialize, Deserialize)]
 pub struct Stack(Vec<Card>);
 
 impl Stack {

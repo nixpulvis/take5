@@ -1,5 +1,3 @@
-use serde::de::Error;
-use serde::{Deserialize, Deserializer};
 use take5;
 use wrapper::Card;
 
@@ -14,19 +12,6 @@ impl Stack {
         Stack(wrapped)
     }
 }
-
-// impl<'de> Deserialize<'de> for Stack {
-//     fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-//     where
-//         D: Deserializer<'de>,
-//     {
-//         let cards = try!(deserializer.visit_seq(VecVisitor::new()));
-//         if cards.len() < 1 {
-//             return Err(Error::length_mismatch(cards.len()));
-//         }
-//         Ok(Stack::new(cards))
-//     }
-// }
 
 #[cfg(test)]
 mod tests {

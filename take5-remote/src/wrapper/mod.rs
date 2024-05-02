@@ -4,10 +4,10 @@ pub use self::stack::Stack;
 
 macro_rules! create_wrapper {
     ($name:ident) => {
-        use serde::Serialize;
+        use serde::{Deserialize, Serialize};
         use std::ops::{Deref, DerefMut};
 
-        #[derive(Debug, Serialize)]
+        #[derive(Debug, Serialize, Deserialize)]
         pub struct $name(take5::$name);
 
         impl Deref for $name {
