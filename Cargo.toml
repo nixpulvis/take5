@@ -6,6 +6,9 @@ authors = [
     "Alex Jo <jo.al@husky.neu.edu>",
 ]
 
+[workspace]
+members = ["take5-cli", "take5-ext"]
+
 [dependencies]
 itertools = "0.4"
 rand = "0.3"
