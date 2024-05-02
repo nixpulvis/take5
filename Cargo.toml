@@ -7,7 +7,7 @@ authors = [
 ]
 
 [workspace]
-members = ["take5-cli", "take5-ext"]
+members = ["take5-cli", "take5-ext", "take5-remote"]
 
 [dependencies]
 itertools = "0.4"
