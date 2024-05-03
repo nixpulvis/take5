@@ -1,5 +1,6 @@
 use board::Board;
 use card::Card;
+use configuration::Configuration;
 use player::{Id, Player};
 
 pub use self::standard_dealer::StandardDealer;
@@ -62,7 +63,13 @@ pub trait Dealer {
     ///     assert_eq!(player.hand().len(), Configuration::turn_count());
     /// }
     /// ```
-    fn deals(&mut self, players: &mut [Box<dyn Player>]);
+    fn deals(&mut self, players: &mut [Box<dyn Player>]) {
+        for _ in 0..Configuration::turn_count() {
+            for player in players.iter_mut() {
+                player.draw(self.deal());
+            }
+        }
+    }
 
     /// Clear and deal a card to each stack on the given board.
     ///

@@ -2,7 +2,7 @@ use rand::{self, Rng};
 use std::fs::File;
 use std::io::Read;
 use std::path::Path;
-use take5::{Card, Configuration, Dealer, Player};
+use take5::{Card, Dealer};
 
 /// A dealer who reads bull values from a configuration file.
 #[derive(Debug, Default)]
@@ -53,13 +53,5 @@ impl Dealer for CustomDealer {
 
     fn deal(&mut self) -> Card {
         self.deck.pop().expect("dealer ran out of cards.")
-    }
-
-    fn deals(&mut self, players: &mut [Box<dyn Player>]) {
-        for _ in 0..Configuration::turn_count() {
-            for player in players.iter_mut() {
-                player.draw(self.deal());
-            }
-        }
     }
 }

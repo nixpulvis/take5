@@ -1,7 +1,5 @@
 use card::Card;
-use configuration::Configuration;
 use dealer::Dealer;
-use player::Player;
 use rand::{self, Rng};
 
 /// A dealer who attempts to make the game as fair as possible.
@@ -24,13 +22,5 @@ impl Dealer for StandardDealer {
 
     fn deal(&mut self) -> Card {
         self.deck.pop().expect("dealer ran out of cards.")
-    }
-
-    fn deals(&mut self, players: &mut [Box<dyn Player>]) {
-        for _ in 0..Configuration::turn_count() {
-            for player in players.iter_mut() {
-                player.draw(self.deal());
-            }
-        }
     }
 }
