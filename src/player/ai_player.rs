@@ -1,7 +1,7 @@
-use std::fmt;
-use card::Card;
 use board::{Board, StackId};
-use player::{Player, Id};
+use card::Card;
+use player::{Id, Player};
+use std::fmt;
 
 /// A computer player, implemented as a simple AI.
 ///

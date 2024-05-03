@@ -1,7 +1,7 @@
 use std::fmt;
 use std::io::{self, BufRead, Write};
-use take5::{Board, StackId, Card, Player};
 use take5::player::Id;
+use take5::{Board, Card, Player, StackId};
 
 /// A player who makes decisions from STDIN.
 ///
@@ -69,17 +69,20 @@ impl Player for StdinPlayer {
         print!("\nPlay a card: ");
         io::stdout().flush().expect("error writing to stdout.");
         let stdin = io::stdin();
-        let line = stdin.lock()
-                        .lines()
-                        .next()
-                        .expect("no more lines in stdin")
-                        .expect("error reading from stdin.");
+        let line = stdin
+            .lock()
+            .lines()
+            .next()
+            .expect("no more lines in stdin")
+            .expect("error reading from stdin.");
         match line.parse() {
             Ok(c) if c < self.hand.len() => self.hand.remove(c),
             Ok(c) => {
-                println!("choice must be in range [0, {}], given {}.",
-                         self.hand.len() - 1,
-                         c);
+                println!(
+                    "choice must be in range [0, {}], given {}.",
+                    self.hand.len() - 1,
+                    c
+                );
                 self.play()
             }
             Err(e) => {
@@ -97,11 +100,12 @@ impl Player for StdinPlayer {
         print!("\nChoose a stack (A, B, C, or D): ");
         io::stdout().flush().expect("error writing to stdout.");
         let stdin = io::stdin();
-        let line = stdin.lock()
-                        .lines()
-                        .next()
-                        .expect("no more lines in stdin")
-                        .expect("error reading from stdin.");
+        let line = stdin
+            .lock()
+            .lines()
+            .next()
+            .expect("no more lines in stdin")
+            .expect("error reading from stdin.");
         match &line[..] {
             "A" => StackId::A,
             "B" => StackId::B,
