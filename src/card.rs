@@ -1,4 +1,4 @@
-use configuration::Configuration;
+use crate::Configuration;
 use std::fmt;
 
 /// Playing cards for the game.

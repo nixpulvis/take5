@@ -1,7 +1,5 @@
-use board::Board;
-use card::Card;
-use configuration::Configuration;
-use player::{Id, Player};
+use crate::player::Id;
+use crate::{Board, Card, Configuration, Player};
 
 pub use self::standard_dealer::StandardDealer;
 
@@ -54,8 +52,8 @@ pub trait Dealer {
     /// use take5::player::{Player, AiPlayer};
     ///
     /// let mut dealer = StandardDealer::default();
-    /// let mut players: Vec<Box<Player>> = (0..2).map(|id| {
-    ///     Box::new(AiPlayer::new(id)) as Box<Player>
+    /// let mut players: Vec<Box<dyn Player>> = (0..2).map(|id| {
+    ///     Box::new(AiPlayer::new(id)) as Box<dyn Player>
     /// }).collect();
     /// dealer.open();
     /// dealer.deals(&mut players);
@@ -118,8 +116,8 @@ pub trait Dealer {
     ///
     /// let mut board = Board::default();
     /// let mut dealer = StandardDealer::default();
-    /// let mut players: Vec<Box<Player>> = (0..2).map(|id| {
-    ///     Box::new(AiPlayer::new(id)) as Box<Player>
+    /// let mut players: Vec<Box<dyn Player>> = (0..2).map(|id| {
+    ///     Box::new(AiPlayer::new(id)) as Box<dyn Player>
     /// }).collect();
     /// dealer.open();
     /// dealer.flip(&mut board);

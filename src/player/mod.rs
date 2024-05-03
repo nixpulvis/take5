@@ -1,5 +1,4 @@
-use board::{Board, StackId};
-use card::Card;
+use crate::{Board, Card, StackId};
 use std::fmt;
 
 pub use self::ai_player::AiPlayer;

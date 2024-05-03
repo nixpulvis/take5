@@ -1,5 +1,4 @@
-use card::Card;
-use configuration::Configuration;
+use crate::{Card, Configuration};
 use std::{fmt, ops};
 
 /// A stack of cards you can put cards on and take all of.

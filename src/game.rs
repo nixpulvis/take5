@@ -1,8 +1,5 @@
-use board::Board;
-use configuration::Configuration;
-use dealer::Dealer;
+use crate::{Board, Configuration, Dealer, Player};
 use itertools::Itertools;
-use player::Player;
 
 /// Running of the game of take5.
 pub struct Game {

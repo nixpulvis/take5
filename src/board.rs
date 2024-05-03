@@ -1,6 +1,5 @@
-use card::Card;
+use crate::{Card, Stack};
 use itertools::Itertools;
-use stack::Stack;
 use std::slice::{Iter, IterMut};
 use std::{fmt, ops};
 

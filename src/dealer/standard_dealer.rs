@@ -1,5 +1,4 @@
-use card::Card;
-use dealer::Dealer;
+use crate::{Card, Dealer};
 use rand::{self, Rng};
 
 /// A dealer who attempts to make the game as fair as possible.

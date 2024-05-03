@@ -5,6 +5,7 @@ authors = [
     "Nathan Lilienthal <nathan@nixpulvis.com>",
     "Alex Jo <jo.al@husky.neu.edu>",
 ]
+edition = '2021'
 
 [workspace]
 members = ["take5-cli", "take5-ext", "take5-remote"]

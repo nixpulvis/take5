@@ -1,6 +1,5 @@
-use board::{Board, StackId};
-use card::Card;
-use player::{Id, Player};
+use crate::player::Id;
+use crate::{Board, Card, Player, StackId};
 use std::fmt;
 
 /// A computer player, implemented as a simple AI.
